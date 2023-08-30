@@ -46,7 +46,7 @@ function SearchGifs() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <button onClick={handleSearch}>Search</button>
+                <button onClick={handleSearch}></button>
             </div>
             <div className="gif-container">
                 {searchGifs.map((gif) => (
@@ -55,12 +55,12 @@ function SearchGifs() {
             </div>
             {showTrending && (
                 <>
-                <h2>Trending Gifs</h2>
-                <div className="gif-container">
-                    {trendingGifs.map((gif) => (
-                    <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
-                    ))}
-                </div>
+                    <div className="gif-container">
+                        <h2>Trending Gifs</h2>
+                        {trendingGifs.map((gif) => (
+                        <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
+                        ))}
+                    </div>
                 </>
             )}
         </div>
