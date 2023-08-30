@@ -1,38 +1,51 @@
+/* App.css */
+
 .App {
   text-align: center;
+  margin-top: 30px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.button-container {
+  margin-bottom: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.button-container button {
+  margin-right: 10px;
+}
+
+.gif-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 20px;
+  height: 100vh;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.gif-container img {
+  width: 100%;
+  height: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-container {
+  margin: 20px 0;
+}
+
+.search-container input[type="text"] {
+  padding: 5px;
+  width: 200px;
+}
+
+.search-container button {
+  padding: 5px 10px;
+}
+
+.trending-gifs h2,
+.search-gifs h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }

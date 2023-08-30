@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import TrendGifs from './components/trendingGIF';
+import SearchGifs from './components/searchGIF';
 
-function App() {
+export default function App() {
+  const [showSearch, setShowSearch] = useState(true);
+
+  const handleTrendClick = () => {
+    setShowSearch(false);
+  };
+
+  const handleSearchClick = () => {
+    setShowSearch(true);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={handleTrendClick}>Trending</button>
+      <button onClick={handleSearchClick}>Search</button>
+      {showSearch ? <SearchGifs /> : <TrendGifs />}
     </div>
   );
 }
-
-export default App;
