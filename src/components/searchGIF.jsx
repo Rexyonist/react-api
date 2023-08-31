@@ -49,34 +49,34 @@ function SearchGifs() {
     return (
         <div className="search-gifs">
             <div className="search-container">
-                <div className='search-bar'>
+                <div className="input-src">
                     <input
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onKeyDown={handleKeyPress}
-                    />
-                    <button className='search-button' onClick={handleSearch}>
-                        <FontAwesomeIcon icon={faSearch} className='btn-search'/>                    
-                    </button>
-                </div>                 
+                    className='src-input' />
+                    <div className="src-icon-conta">
+                        <FontAwesomeIcon icon={faSearch} className='btn-search'/>                
+                    </div>
+                </div>
             </div>
             <div className="gif-container">
                 {searchGifs.map((gif) => (
                 <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
                 ))}
             </div>
-            {showTrending && (
-                <>
+            {showTrending && (               
+                <div className="trend-gif" id='trend-gif2'>
+                    <h2>Trending GIFs</h2>
                     <div className="gif-container">
-                        <h2>Trending GIFs</h2>
                         {trendingGifs.map((gif) => (
-                        <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
-                        ))}
+                            <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
+                            ))}
                     </div>
-                </>
+                </div>              
             )}
-        </div>
+            </div>
     );
 }
 

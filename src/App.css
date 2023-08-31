@@ -22,6 +22,18 @@ h2 {
   margin-bottom: 20px;
 }
 
+.trend-gif {
+  background-color: black;
+  width: 50%;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#trend-gif2 {
+  width: 100%;
+}
+
 .gif-container {
   background-color: black;
   display: grid;
@@ -29,8 +41,13 @@ h2 {
   grid-template-rows: masonry;
   justify-content: center;
   gap: 20px;
-  width: 100%;
-  margin-top: 40px;
+
+}
+
+.search-gifs {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gif-container img {
@@ -49,4 +66,20 @@ h2 {
 
 .search-container button {
   padding: 5px 10px;
+}
+
+.input-src {
+  position: relative;
+  display: inline-block;
+}
+
+.src-input {
+  padding-right: 30px;
+}
+
+.src-icon-conta {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
 }
