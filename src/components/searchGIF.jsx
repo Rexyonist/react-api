@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const API_KEY = 'CQ4jUWnYsaX3DnV1r4ihtdbHVz74LUF4';
 const SEARCH_API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}`;
@@ -38,15 +40,26 @@ function SearchGifs() {
         }
     };
 
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    }
+
     return (
         <div className="search-gifs">
             <div className="search-container">
-                <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button onClick={handleSearch}></button>
+                <div className='search-bar'>
+                    <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyDown={handleKeyPress}
+                    />
+                    <button className='search-button' onClick={handleSearch}>
+                        <FontAwesomeIcon icon={faSearch} className='btn-search'/>                    
+                    </button>
+                </div>                 
             </div>
             <div className="gif-container">
                 {searchGifs.map((gif) => (
@@ -56,7 +69,7 @@ function SearchGifs() {
             {showTrending && (
                 <>
                     <div className="gif-container">
-                        <h2>Trending Gifs</h2>
+                        <h2>Trending GIFs</h2>
                         {trendingGifs.map((gif) => (
                         <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
                         ))}

@@ -1,5 +1,3 @@
-/* App.css */
-
 .App {
   text-align: center;
   margin-top: 30px;
@@ -13,10 +11,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-}
-
-h1 {
-  margin-bottom: 20px;
+  border: none;
 }
 
 h2 {
@@ -27,17 +22,15 @@ h2 {
   margin-bottom: 20px;
 }
 
-.button-container button {
-  margin-right: 10px;
-}
-
 .gif-container {
   background-color: black;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: masonry;
   justify-content: center;
   gap: 20px;
   width: 100%;
+  margin-top: 40px;
 }
 
 .gif-container img {
