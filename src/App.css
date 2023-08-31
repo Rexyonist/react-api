@@ -14,8 +14,10 @@
   border: none;
 }
 
-h2 {
+h3 {
+  margin-left: 10px;
   color: white;
+  text-align: left;
 }
 
 .button-container {

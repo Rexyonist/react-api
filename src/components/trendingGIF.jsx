@@ -22,7 +22,7 @@ function TrendGifs() {
 
     return (
         <div className="trend-gif">
-            <h2>Trending GIFs</h2>
+            <h3>Trending GIFs</h3>
             <div className="gif-container">
                 {trendGifs.map((gif) => (
                     <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
