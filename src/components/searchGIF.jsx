@@ -25,7 +25,8 @@ function SearchGifs() {
         }
     };
 
-    const handleSearch = async () => {
+    const handleSearch = async (e) => {
+        e.preventDefault()
         try {
             if (searchTerm.trim() !== '') {
                 const response = await axios.get(`${SEARCH_API_URL}&q=${searchTerm}`);
@@ -40,30 +41,25 @@ function SearchGifs() {
         }
     };
 
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            handleSearch();
-        }
-    }
-
     return (
         <div className="search-gifs">
             <div className="search-container">
-                <div className="input-src">
+                <form className='input-src' onSubmit={handleSearch}>
                     <input
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    onKeyDown={handleKeyPress}
                     className='src-input' />
-                    <div className="src-icon-conta">
+                    <button type="submit" className="src-icon-conta">
                         <FontAwesomeIcon icon={faSearch} className='btn-search'/>                
-                    </div>
-                </div>
+                    </button>
+                </form>
             </div>
             <div className="gif-container">
                 {searchGifs.map((gif) => (
+                            <div>
                 <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
+                            </div>
                 ))}
             </div>
             {showTrending && (               
@@ -71,7 +67,9 @@ function SearchGifs() {
                     <h3>Trending GIFs</h3>
                     <div className="gif-container">
                         {trendingGifs.map((gif) => (
+                            <div>
                             <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
+                            </div>
                             ))}
                     </div>
                 </div>              

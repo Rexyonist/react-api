@@ -36,13 +36,31 @@ h3 {
   width: 100%;
 }
 
-.gif-container {
+/* .gif-container {
   background-color: black;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: masonry;
   gap: 20px;
 
+} */
+
+.gif-container {
+  column-count: 4;
+  column-gap: 10px;
+}
+
+.gif-container > div {
+  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  margin-bottom: 10px;
+  break-inside: avoid;
+}
+
+.gif-container > div > img {
+  grid-row: 1 / -1;
+  grid-column: 1;
 }
 
 .search-gifs {
