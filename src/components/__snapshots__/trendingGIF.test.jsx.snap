@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TrendGifs snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="trend-gif"
+  >
+    <h3>
+      Trending GIFs
+    </h3>
+    <div
+      class="gif-container"
+    />
+  </div>
+</DocumentFragment>
+`;
