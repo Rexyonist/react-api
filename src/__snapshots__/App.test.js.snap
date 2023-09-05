@@ -13,6 +13,7 @@ exports[`App Component renders correctly 1`] = `
     </button>
     <div
       class="search-gifs"
+      data-testid="Search-GIF"
     >
       <div
         class="search-container"
@@ -22,11 +23,13 @@ exports[`App Component renders correctly 1`] = `
         >
           <input
             class="src-input"
+            data-testid="search-input"
             type="text"
             value=""
           />
           <button
             class="src-icon-conta"
+            data-testid="search-button"
             type="submit"
           >
             <svg
@@ -52,6 +55,7 @@ exports[`App Component renders correctly 1`] = `
       />
       <div
         class="trend-gif"
+        data-testid="Trend-GIF"
         id="trend-gif2"
       >
         <h3>

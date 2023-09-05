@@ -1,20 +1,23 @@
 import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import App from "./App";
-import MockAdapter from "axios-mock-adapter";
-import { waitFor } from "@testing-library/react";
+import axios from "axios";
+// import MockAdapter from "axios-mock-adapter";
 
-const axios = require("axios");
-const mock = new MockAdapter(axios);
+jest.mock("axios");
+
+// const axios = require("axios");
+// const mock = new MockAdapter(axios);
 
 describe('App Component', () => {
-    // beforeEach(() => {
-    //     mock.reset();
-    // })
 
     it('renders correctly', () => {
-        const {container} = render(<App/>);
+        const { container } = render(<App />);
         expect(container).toMatchSnapshot();
+    });
+    
+    beforeEach(() => {
+        jest.clearAllMocks();
     });
 
     it('switches to TrendGIF component when "Trending" button is clicked', async () => {
@@ -24,8 +27,10 @@ describe('App Component', () => {
 
         await waitFor(() => {
             const trendComponent = screen.queryByTestId('Trend-GIF');
-            expect(trendComponent).toBeInTheDocument();
+            expect(trendComponent).toBeTruthy();
         });
+
+        await screen.findByTestId('Trend-GIF');
 
         const searchComponent = screen.queryByTestId('Search-GIF');
         expect(searchComponent).toBeNull();
@@ -37,12 +42,12 @@ describe('App Component', () => {
         const searchButton = screen.getByText('Search');
         fireEvent.click(searchButton);
 
-        // await waitFor(() => {
-        //     const searchComponent = screen.queryByTestId('Search-GIF');
-        //     expect(searchComponent).toBeInTheDocument();
-        // });
+        await waitFor(() => {
+            const searchComponent = screen.queryByTestId('Search-GIF');
+            expect(searchComponent).toBeTruthy();
+        });
 
-        await screen.findByTestId("Search-GIF");
+        await screen.findByTestId('Search-GIF');
     
         const trendComponent = screen.queryByTestId('Trend-GIF');
         expect(trendComponent).not.toBeNull();
@@ -55,15 +60,19 @@ describe('App Component', () => {
             ],
         };
 
-        mock.onGet('https://api.giphy.com/v1/gifs/search').reply(200, -mockSearchData);
+        axios.get.mockResolvedValue({ data: mockSearchData});
 
         render(<App />);
-        const searchButton = screen.getByText('Search');
+        const searchInput = screen.getByTestId('search-input');
+        const searchButton = screen.getByTestId('search-button');
+
+        fireEvent.change(searchInput, { target: { value: 'test' } });
         fireEvent.click(searchButton);
 
-        await screen.findByText('GIF 3');
-
-        expect(mock.history.get.length).toBe(1);
-        expect(mock.history.get[0].url).toBe('https://api.giphy.com/v1/gifs/search?api_key=API_KEY&q=test');
-    })
+        await waitFor(() => {
+            expect(screen.getByTestId('search-result')).toBeTruthy();
+        });
+        
+        expect(axios.get).toHaveBeenCalledWith('https://api.giphy.com/v1/gifs/search?api_key=CQ4jUWnYsaX3DnV1r4ihtdbHVz74LUF4&q=test');
+    });
 });

@@ -21,7 +21,7 @@ function TrendGifs() {
     };
 
     return (
-        <div className="trend-gif">
+        <div className="trend-gif" data-testid="Trend-GIF">
             <h3>Trending GIFs</h3>
                 <div className="gif-container" >
                     {trendGifs.map((gif) => (

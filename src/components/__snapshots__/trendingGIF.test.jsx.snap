@@ -4,6 +4,7 @@ exports[`TrendGifs snapshot 1`] = `
 <DocumentFragment>
   <div
     class="trend-gif"
+    data-testid="Trend-GIF"
   >
     <h3>
       Trending GIFs

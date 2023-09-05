@@ -42,28 +42,29 @@ function SearchGifs() {
     };
 
     return (
-        <div className="search-gifs">
+        <div className="search-gifs" data-testid="Search-GIF">
             <div className="search-container">
                 <form className='input-src' onSubmit={handleSearch}>
                     <input
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className='src-input' />
-                    <button type="submit" className="src-icon-conta">
+                    className='src-input'
+                    data-testid="search-input"/>
+                    <button type="submit" className="src-icon-conta" data-testid="search-button">
                         <FontAwesomeIcon icon={faSearch} className='btn-search'/>                
                     </button>
                 </form>
             </div>
-            {searchGifs.map((gif) => (
-                <div className="gif-container" key={gif.id}>
-                    <div>
-                <img src={gif.images.fixed_height.url} alt={gif.title} />
-                    </div>
+                <div className="gif-container">
+                    {searchGifs.map((gif) => (
+                        <div key={gif.id} data-testid="search-result">
+                            <img src={gif.images.fixed_height.url} alt={gif.title} />
+                        </div>
+                    ))}
                 </div>
-            ))}
-            {showTrending && (       
-                <div className="trend-gif" id='trend-gif2'>
+                {showTrending && (       
+                <div className="trend-gif" id='trend-gif2' data-testid="Trend-GIF">
                     <h3>Trending GIFs</h3>
                         <div className="gif-container" >
                         {trendingGifs.map((gif) => (
