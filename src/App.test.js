@@ -2,12 +2,8 @@ import React from "react";
 import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 import axios from "axios";
-// import MockAdapter from "axios-mock-adapter";
 
 jest.mock("axios");
-
-// const axios = require("axios");
-// const mock = new MockAdapter(axios);
 
 describe('App Component', () => {
 
@@ -21,6 +17,7 @@ describe('App Component', () => {
     });
 
     it('switches to TrendGIF component when "Trending" button is clicked', async () => {
+        
         render(<App />);       
         const trendButton = screen.getByText('Trending');
         fireEvent.click(trendButton);
@@ -74,5 +71,24 @@ describe('App Component', () => {
         });
         
         expect(axios.get).toHaveBeenCalledWith('https://api.giphy.com/v1/gifs/search?api_key=CQ4jUWnYsaX3DnV1r4ihtdbHVz74LUF4&q=test');
+    });
+
+    it('makes an Axios call when "Trending" button is clicked', async () => {
+        const mockTrendData = {
+            data: [
+                { id: '1', images: { fixed_height: { url: 'https://example.com/1.gif' } }, title: 'GIF 1' },
+                { id: '2', images: { fixed_height: { url: 'https://example.com/2.gif' } }, title: 'GIF 2' },
+            ]
+        }
+
+        axios.get.mockResolvedValue({ data: mockTrendData });
+
+        render(<App />);
+
+        await waitFor(() => {
+            expect(screen.getByTestId('Trend-GIF')).toBeTruthy();
+        });
+
+        expect(axios.get).toHaveBeenCalledWith('https://api.giphy.com/v1/gifs/trending?api_key=CQ4jUWnYsaX3DnV1r4ihtdbHVz74LUF4')
     });
 });

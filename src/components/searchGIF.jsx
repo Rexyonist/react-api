@@ -45,6 +45,7 @@ function SearchGifs() {
         <div className="search-gifs" data-testid="Search-GIF">
             <div className="search-container">
                 <form className='input-src' onSubmit={handleSearch}>
+                    <div className='search-box'>
                     <input
                     type="text"
                     value={searchTerm}
@@ -54,6 +55,7 @@ function SearchGifs() {
                     <button type="submit" className="src-icon-conta" data-testid="search-button">
                         <FontAwesomeIcon icon={faSearch} className='btn-search'/>                
                     </button>
+                    </div>
                 </form>
             </div>
                 <div className="gif-container">

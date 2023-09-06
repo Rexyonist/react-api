@@ -16,8 +16,8 @@ export default function App() {
 
   return (
     <div className="App">
-      <button onClick={handleTrendClick}>Trending</button>
-      <button onClick={handleSearchClick}>Search</button>
+      <button className='trendingBtn' onClick={handleTrendClick}>Trending</button>
+      <button className='searchBtn' onClick={handleSearchClick}>Search</button>
       {showSearch ? <SearchGifs /> : <TrendGifs />}
     </div>
   );
