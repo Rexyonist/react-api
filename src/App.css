@@ -6,7 +6,6 @@
 .App button {
   background-color: transparent;
   color: #05466A;
-  margin: 10px;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -35,15 +34,6 @@ h3 {
 #trend-gif2 {
   width: 100%;
 }
-
-/* .gif-container {
-  background-color: black;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: masonry;
-  gap: 20px;
-
-} */
 
 .gif-container {
   column-count: 4;

@@ -23,11 +23,17 @@ function TrendGifs() {
     return (
         <div className="trend-gif" data-testid="Trend-GIF">
             <h3>Trending GIFs</h3>
-                <div className="gif-container" >
-                    {trendGifs.map((gif) => (
-                        <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
-                    ))}
-                </div>
+                {
+                    trendGifs.length ? (
+                        <div data-testid="gif-container" className="gif-container" >
+                            {trendGifs.map((gif) => (
+                                <img key={gif.id} src={gif.images.fixed_height.url} alt={gif.title} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div data-testid="gif-loading" >Loading...</div>
+                    )
+                }
         </div>
     );
 }

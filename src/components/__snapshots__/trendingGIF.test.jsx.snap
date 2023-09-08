@@ -11,7 +11,17 @@ exports[`TrendGifs snapshot 1`] = `
     </h3>
     <div
       class="gif-container"
-    />
+      data-testid="gif-container"
+    >
+      <img
+        alt="GIF 1"
+        src="https://example.com/1.gif"
+      />
+      <img
+        alt="GIF 2"
+        src="https://example.com/2.gif"
+      />
+    </div>
   </div>
 </DocumentFragment>
 `;
