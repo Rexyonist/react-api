@@ -1,5 +1,9 @@
 /** @type { import('@storybook/react').Preview } */
-const preview = {
+import { initialize, mswLoader } from 'msw-storybook-addon';
+
+initialize();
+
+export default {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
@@ -9,6 +13,10 @@ const preview = {
       },
     },
   },
+  loaders: [mswLoader]
 };
 
-export default preview;
+if(typeof global.process === 'undefined') {
+  const { worker } = require('../src/mocks/browser');
+  worker.start();
+}
