@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import TrendGifs from './components/trendingGIF';
-import SearchGifs from './components/searchGIF';
+import TrendGifs from './components/trending/trendingGIF';
+import SearchGifs from './components/search/searchGIF';
 
 export default function App() {
   const [showSearch, setShowSearch] = useState(true);

@@ -1,8 +1,5 @@
 /** @type { import('@storybook/react').Preview } */
-import { initialize, mswLoader } from 'msw-storybook-addon';
-import { addDecorator } from '@storybook/react';
-import { actions } from '@storybook/addon-actions';
-import { withLinks } from '@storybook/addon-links';
+import { initialize, mswDecorator } from 'msw-storybook-addon';
 
 initialize();
 
@@ -16,10 +13,5 @@ export default {
       },
     },
   },
-  loaders: [mswLoader]
+  decorators: [mswDecorator]
 };
-
-if(typeof global.process === 'undefined') {
-  const { worker } = require('../src/mocks/browser');
-  worker.start();
-}
