@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import { action } from '@storybook/addon-actions';
 
 const API_KEY = 'CQ4jUWnYsaX3DnV1r4ihtdbHVz74LUF4';
 const SEARCH_API_URL = `https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}`;
@@ -32,12 +33,16 @@ function SearchGifs() {
                 const response = await axios.get(`${SEARCH_API_URL}&q=${searchTerm}`);
                 setSearchGifs(response.data.data);
                 setShowTrending(false);
+
+                action('API Request')(SEARCH_API_URL);
+                action('API Response')(response.data);
             } else {
                 setSearchGifs([]);
                 setShowTrending(true);
             }
         } catch (error) {
             console.error('Error searching gifs:', error);
+            action('API Error')(error.message);
         }
     };
 

@@ -1,5 +1,8 @@
 /** @type { import('@storybook/react').Preview } */
 import { initialize, mswLoader } from 'msw-storybook-addon';
+import { addDecorator } from '@storybook/react';
+import { actions } from '@storybook/addon-actions';
+import { withLinks } from '@storybook/addon-links';
 
 initialize();
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { action } from '@storybook/addon-actions';
 
 const API_KEY = 'CQ4jUWnYsaX3DnV1r4ihtdbHVz74LUF4';
 const TRENDING_API_URL = `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}`;
@@ -15,8 +16,10 @@ function TrendGifs() {
         try {
             const response = await axios.get(TRENDING_API_URL);
             setTrendGifs(response.data.data);
+            action('API Response')(response.data);
         } catch (error) {
             console.error('Error fetching trending gifs:', error);
+            action('API Error')(error.message);
         }
     };
 

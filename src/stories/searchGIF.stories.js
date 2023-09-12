@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
 import SearchGifs  from '../components/searchGIF';
-import { mswDecorator } from "msw-storybook-addon"
-import { worker } from "../mocks/browser"
+import { action } from '@storybook/addon-actions';
 
 export default {
     title: 'Components/Search',
     component : SearchGifs,
-    decorators: [mswDecorator]
+    decorators: [action('API Request'), action('API Response'), action('API Error')]
 }
 
-export const Default = () => { 
-    
+export const Default = () => <SearchGifs/>;
+
     // worker.start();
     // useEffect(() => {
     //     worker.start();
@@ -19,5 +18,5 @@ export const Default = () => {
     //     }
     // }, []);
     
-    return <SearchGifs/>
-};
+    // return <SearchGifs/>
+// };
